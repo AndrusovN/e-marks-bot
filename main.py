@@ -34,7 +34,7 @@ def get_user(sheet, user):
             row = id
             break
     if row == -1:
-        return -1, None
+        return -1, None, None
     return row, sheet[2][row], sheet[3][row]
 
 
@@ -59,6 +59,11 @@ def get_marks(m):
 def start(m):
     sheet = get_sheet()
     _, name, level = get_user(sheet, m.from_user)
+    if name is None:
+        bot.send_message(m.from_user.id, """Привет! Я бот для оценок.
+Мне не удалось найти тебя в таблице учеников :(
+Если это ошибка, напиши, пожалуйста, @n_andrusov""")
+        return
     bot.send_message(m.from_user.id, f"""Привет! Я бот для оценок. 
 По команде /get_marks я могу написать твои текущие оценки.
 Пожалуйста, проверь, что я правильно определил, кто ты: {name}, уровень: {level}
