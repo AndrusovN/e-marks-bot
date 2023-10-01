@@ -1,7 +1,6 @@
 import telebot
 import json
 import os
-import re
 from dotenv import load_dotenv
 from google.oauth2 import service_account
 import pandas as pd
