@@ -30,7 +30,7 @@ def get_sheet():
 def get_user(sheet, user):
     row = -1
     for id, cell in enumerate(sheet[1]):
-        if cell == '@' + user.username or cell == user.first_name:
+        if cell == '@' + str(user.username) or cell == str(user.first_name):
             row = id
             break
     if row == -1:
